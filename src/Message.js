@@ -11,13 +11,22 @@ class Message extends React.Component{
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    handleChange(event) {
+        this.setState({
+            message: event.target.value
+        });
+    }
+
     handleSubmit(event){
         event.PreventDefault();
-        var value = event.target.value;
 
+        //calls a send message function not yet created
+        this.props.sendMessage(this.state.message);
+
+        //resets input field to ''
         this.setState(function (){
             return{
-                message: value
+                message: ''
             }
         });
 
@@ -30,11 +39,10 @@ class Message extends React.Component{
                 <input 
                     className='messageInput'
                     placeholder='Type Your Message Here'
+                    onChange ={this.handleChange}
+                    required
                 />
-                <button
-                    className='messageButton'
-                    type='submit'
-                >Submit</button>
+                
 
             </form>
         )
