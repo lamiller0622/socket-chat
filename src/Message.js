@@ -1,13 +1,11 @@
-var React = require('react');
+const React = require('react');
 
 class Message extends React.Component{
     
     constructor(props) {
         super(props);
 
-        this.state = {
-            message: ''
-        };
+        this.state = { message: '' };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -24,11 +22,7 @@ class Message extends React.Component{
         this.props.sendMessage(this.state.message);
 
         //resets input field to ''
-        this.setState(function (){
-            return{
-                message: ''
-            }
-        });
+        this.setState( () => ({ message: ''}));
 
     }
     
